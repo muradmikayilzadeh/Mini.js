@@ -82,14 +82,6 @@ var Game = (function () {
 }());
 
 
-var oyun=new Game(200,200);
-
-oyun.changeWindowBg('#666666');
-
-oyun.drawRect(10,20,30,50,'black'); 
-
-lines=[[[0,0],[100,100]],[[100,100],[400,300]]]
-oyun.drawFigure(lines)
 
 
 
