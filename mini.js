@@ -52,6 +52,12 @@ var Game = (function () {
 
     //Bu funksiya ile koordinatlari array seklinde vermekle istenilen fiquru cekmek olar
 
+    //Meselen, koordinatlar adinda array yaradilir ve asagida oldugu kimi ona deyerler oturulur.a
+
+    // var koordinatlar = [[[0,0],[100,100]],[[100,100],[400,300]]] -------- koordinatlar[0] ve koordinatlar[1] heresi ayri xetti temsil edir.
+    //Burada istenilen qeder duz xett koordinatlari gonderile biler. koordinatlar[0][0] xettin baslangici, koordinatlar[0][1] ise xettin son noqtesinin
+    //koordinatlaridir. Hemin qayda koordinatlar[1] icerisindeki koordinatlar ucun de kecerlidir.
+
     Game.prototype.drawFigure = function(coordinats){
 
         this.coordinats = coordinats;
@@ -75,6 +81,15 @@ var Game = (function () {
 
 }());
 
+
+var oyun=new Game(200,200);
+
+oyun.changeWindowBg('#666666');
+
+oyun.drawRect(10,20,30,50,'black'); 
+
+lines=[[[0,0],[100,100]],[[100,100],[400,300]]]
+oyun.drawFigure(lines)
 
 
 
