@@ -10,7 +10,6 @@
 
 */
 
-
 var Game = (function () {
 
 	
@@ -90,7 +89,7 @@ var Game = (function () {
     
     @description Bu funksiya ile koordinatlari array seklinde vermekle ve rengi daxil etmekle istenilen fiquru cekmek olar
 
-    Meselen, koordinatlar adinda array yaradilir ve asagida oldugu kimi ona deyerler oturulur.a
+    Meselen, koordinatlar adinda array yaradilir ve asagida oldugu kimi ona deyerler oturulur.
 
     var koordinatlar = [[[0,0],[100,100]],[[100,100],[400,300]]] -------- koordinatlar[0] ve koordinatlar[1] heresi ayri xetti temsil edir.
     Burada istenilen qeder duz xett koordinatlari gonderile biler. koordinatlar[0][0] xettin baslangici, koordinatlar[0][1] ise xettin son noqtesinin
@@ -117,22 +116,47 @@ var Game = (function () {
 
         for (var i = 0; i < coordinats.length; i++) {
             
+            ctx.beginPath();
             ctx.moveTo(coordinats[i][0][0],coordinats[i][0][1]);
             ctx.lineTo(coordinats[i][1][0],coordinats[i][1][1]);
             ctx.strokeStyle = this.color;
             ctx.stroke();
+            ctx.closePath();
 
         }
 
     }
 
+    /**
+    
+    @description Bu funksiya ses elave edir. Esasen arxa fondaki musiqiler ucun istifade edilir. 
+
+    @example var sources = ['1.mp3','2.mp3','3.mp3'];   oyun.soundList(src,100)
+
+    @param {array,number}
+
+    @returns void
+    
+    */
+    Game.prototype.soundList = function(playlist,volume){
+
+        this.playlist = playlist;
+        this.volume = volume;
+
+        var index = 0;
+
+        for(var i = 0; i < playlist.length; i++){
+
+            document.write('<audio src='+playlist[i]+' id='+i+'></audio>');
+
+            var player = document.getElementById(i);
+            player.volume = this.volume / 100;
+            player.autoplay = true;
+
+        }
+
+    }
 
     return Game;
 
 }());
-
-
-
-
-
-
