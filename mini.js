@@ -17,6 +17,8 @@ var Game = (function () {
     
     @description Oyun penceresi yaradir ve "Ishleyir" mesaji verir.
 
+    @example var oyun = new Game(300,400);
+
     @param {number,number}
 
     @returns void
@@ -43,6 +45,8 @@ var Game = (function () {
     /**
     
     @description Bu funksiya oyun penceresinin bg-sini deyisir
+    
+    @example oyun.changeWindowBg('red');
 
     @param {string}
 
@@ -127,6 +131,7 @@ var Game = (function () {
 
     }
 
+
     /**
     
     @description Bu funksiya ses elave edir. Esasen arxa fondaki musiqiler ucun istifade edilir. 
@@ -157,6 +162,37 @@ var Game = (function () {
 
     }
 
+    /**
+    
+    @description Bu funksiya ses effekti elave edir. Esasen qisa hecmli sesler ucun istifade edilir. Meselen, gulle, bomba, dogru, yanlis ve s. ses effektleri.
+
+    @example oyun.soundEffect('bomb.mp3',100)
+
+    @param {string,number}
+
+    @returns void
+    
+    */
+
+    Game.prototype.soundEffect = function(src, volume){
+
+        this.src = src;
+        this.volume = volume;
+
+        document.write('<audio id="effect"></audio>');
+        var audio = document.getElementById('effect');
+
+        audio.src = this.src;
+        audio.volume = this.volume / 100;
+        audio.autoplay = true;
+
+    }
+
     return Game;
 
 }());
+
+
+
+
+
