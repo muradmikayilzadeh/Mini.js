@@ -10,6 +10,9 @@
 
 */
 
+
+// @description Game classi. Oyunun movcud olmasi ucun bu canvasdaki Game funksiyasi mutleq istifade
+//              edilmelidir. Esasen hereketsiz qalacaq olan oyun hisseleri ve ses funksiyalari bu classdadir.
 var Game = (function () {
 
 	
@@ -71,18 +74,18 @@ var Game = (function () {
     @returns void
     
     */
-    Game.prototype.drawRect = function(a,b,c,d,bg){
+    Game.prototype.drawRect = function(a,b,c,d,color){
 
         this.a = a;
         this.b = b;
         this.c = c;
         this.d = d;
-        this.bg = bg;
+        this.color = color;
 
         var canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
 
-        ctx.fillStyle = this.bg;
+        ctx.fillStyle = this.color;
         ctx.fillRect(this.a,this.b,this.c,this.d);
 
     }
@@ -131,6 +134,31 @@ var Game = (function () {
 
     }
 
+
+    /**
+    
+    * @description Cevre cekmek ucun funksiya
+
+      @param {array,string}
+    
+      @example var coordinats = [100,75,20,4,2*Math.PI];  oyun.arc(coordinats,'red');
+
+      @returns void
+
+    */
+
+    Game.prototype.circle = function(coordinats,color){
+
+        this.coordinats = coordinats;
+        this.color = color;
+
+        var canvas = document.getElementById('canvas');
+        var ctx=canvas.getContext('2d');
+        ctx.beginPath();
+        ctx.arc(this.coordinats[0], this.coordinats[1], this.coordinats[2], this.coordinats[3], this.coordinats[4], this.coordinats[5]);
+        ctx.strokeStyle = this.color;
+        ctx.stroke();
+    }
 
     /**
     
@@ -188,11 +216,26 @@ var Game = (function () {
 
     }
 
+
+
     return Game;
 
 }());
 
 
+/**
 
+*@description Player classi. Oyuna karakter kimi dinamik olan obyektlerin elave edilmesi ucundur.
+            Burada Playere muxtelif fiziki quvvelerin tesirini tenzimleye bilersiniz. Meselen, cazibe quvvesi
+            surtunme quvvesi ve s. Her bir Player-e fiziki quvveler ucun muxtelif qiymetler verile biler
+            Meselen player1 ucun cazibe quvvesi 9 olarken, player2 ucun bu 5 ola biler. :))
 
+**/
+var Player = (function(){
 
+    function Player(){
+        console.log('Player Created');
+    }
+
+    return Player;
+}());
