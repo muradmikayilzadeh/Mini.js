@@ -162,6 +162,67 @@ var Game = (function () {
 
     /**
     
+    * @description Ici bos yazi yazmaq ucun funksiya
+
+      @param {string,string,number,number,string}
+    
+      @example oyun.strokeText('40px serif','Hello World',10,200,'red');
+
+      @returns void
+
+    */
+
+    Game.prototype.strokeText = function(font,text,x,y,color){
+
+        this.font = font;
+        this.text = text;
+        this.x = x;
+        this.y = y;
+        this.color = color;
+
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.font = this.font;
+        ctx.strokeStyle = this.color;
+        ctx.strokeText(this.text, this.x, this.y);
+
+    }
+
+
+
+     /**
+    
+    * @description Ici dolu yazi yazmaq ucun funksiya
+
+      @param {string,string,number,number,string}
+    
+      @example oyun.fillText('40px serif','Hello World',10,200,'red');
+
+      @returns void
+
+    */
+
+    Game.prototype.fillText = function(font,text,x,y,color){
+
+        this.font = font;
+        this.text = text;
+        this.x = x;
+        this.y = y;
+        this.color = color;
+
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.font = this.font;
+        ctx.fillStyle = this.color;
+        ctx.fillText(this.text, this.x, this.y);
+
+
+    }
+
+    /**
+    
     @description Bu funksiya ses elave edir. Esasen arxa fondaki musiqiler ucun istifade edilir. 
 
     @example var sources = ['1.mp3','2.mp3','3.mp3'];   oyun.soundList(src,100)
@@ -239,3 +300,4 @@ var Player = (function(){
 
     return Player;
 }());
+
